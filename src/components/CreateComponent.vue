@@ -19,7 +19,7 @@
      </div>
     </div><br />
     <div >
-     <button v-on="addPost">Create</button>
+     <button >Create</button>
     </div>
   </form>
  </div>

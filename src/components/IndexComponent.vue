@@ -21,7 +21,7 @@
          <td>{{ post.title }}</td>
          <td>{{ post.body }}</td>
          <td><router-link :to="{name: 'edit', params: { id: post._id }}" >Edit</router-link></td>
-         <td><button >Delete</button></td>
+         <td><button @click.prevent="deletePost(post._id)">Delete</button></td>
         </tr>
       </tbody>
     </table>
@@ -36,10 +36,21 @@
     }
    },
    created() {
-   let uri = '//localhost:4000/posts';
-   this.axios.get(uri).then(response => {
-    this.posts = response.data;
-   });
+    let uri = '//localhost:4000/posts';
+    this.axios.get(uri).then(response => {
+     this.posts = response.data;
+    });
+   },
+   methods: {
+   deletePost(id)
+   {
+    let uri = `//localhost:4000/posts/delete/${id}`;
+    this.axios.delete(uri).then(() => {
+     this.posts.splice(this.posts.indexOf(id), 1);
+    });
+    //alert(id);
+   }
   }
+
  }
 </script>
