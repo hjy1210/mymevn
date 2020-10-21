@@ -1,18 +1,45 @@
- <template>
- <div >
-   <div >
+<template>
+ <div>
+   <h1>Posts</h1>
+    <div >
+     <div ></div>
      <div >
-       <div >Index Component</div>
-
-       <div >
-         I'm an Index component.
-       </div>
+      <router-link :to="{ name: 'create' }" >Create Post</router-link>
      </div>
-   </div>
- </div>
- </template>
+    </div><br />
 
- <script>
+    <table >
+      <thead>
+      <tr>
+       <th>Title</th>
+       <th>Body</th>
+       <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr v-for="post in posts" :key="post._id">
+         <td>{{ post.title }}</td>
+         <td>{{ post.body }}</td>
+         <td><router-link :to="{name: 'edit', params: { id: post._id }}" >Edit</router-link></td>
+         <td><button >Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+ </div>
+</template>
+
+<script>
  export default {
+   data() {
+    return {
+     posts: []
+    }
+   },
+   created() {
+   let uri = '//localhost:4000/posts';
+   this.axios.get(uri).then(response => {
+    this.posts = response.data;
+   });
+  }
  }
- </script>
+</script>
