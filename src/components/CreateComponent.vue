@@ -19,7 +19,7 @@
      </div>
     </div><br />
     <div >
-     <button >Create</button>
+     <button v-on="addPost">Create</button>
     </div>
   </form>
  </div>
@@ -33,9 +33,13 @@
     }
   },
   methods: {
-   addPost(){
-    console.log(this.post);
-   }
+    addPost(){
+      let uri = '//localhost:4000/posts/add';
+      this.axios.post(uri, this.post).then(() => {
+        this.$router.push({name: 'posts'});
+      });
+     //console.log(this.post);
+    }
   }
  }
 </script>
