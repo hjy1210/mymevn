@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Steps
+
+* 看[mevn-stack-tutorial-from-scratch-for-the-beginner](https://www.codermen.com/blog/81/mevn-stack-tutorial-from-scratch-for-the-beginner) 練習mevn。
