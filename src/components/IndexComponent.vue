@@ -46,7 +46,7 @@
    {
     let uri = `//localhost:4000/posts/delete/${id}`;
     this.axios.delete(uri).then(() => {
-     this.posts.splice(this.posts.indexOf(id), 1);
+      this.posts.splice(this.posts.map(x=>x._id).indexOf(id), 1);
     });
     //alert(id);
    }
